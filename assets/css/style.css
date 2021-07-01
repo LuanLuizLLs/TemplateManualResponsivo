@@ -1,0 +1,119 @@
+/* -- GERAL -- */
+:root {
+    --background_menu: #B0C4DE;
+    --background_conteudo: #FFF;
+    --background_menu_mobile: #4682B4;
+    --color_titulo: #4682B4;
+    --color_item: #4682B4;
+    --color_texto: #000;
+}
+
+html, body {
+    height: 100%;
+}
+
+.manual_titulo {
+    color: var(--color_titulo);
+}
+.manual_texto {
+    color: var(--color_texto);
+}
+
+.manual_item {
+    font-weight: 500;
+    color: var(--color_item) !important;
+}
+.manual_item.active {
+    background-color: #4682B4 !important;
+    border: 1px solid #4682B4 !important;
+    color: #FFF !important;
+}
+
+/* -- MOBILE -- */
+@media (max-width: 991px) {
+    .manual_container {
+        height: 100%;
+    }
+
+    .menu_row {
+        height: auto;
+        background-color: var(--background_menu_mobile);
+    }
+    .manual_row {
+        height: 100%;
+        background-color: var(--background_conteudo);
+    }
+    
+    .manual_conteudo {
+        z-index: 1;
+        width: 60%; 
+        min-width: 300px;
+    }
+
+    .manual_col_conteudo {
+        height: 100%;
+        overflow: auto;
+    }
+    .manual_col_menu_mobile {
+        display: flex;
+        align-items: center;
+    }
+    .manual_col_menu {
+        z-index: -1;
+        height: 100%;
+        width: 300px !important;
+        position: absolute !important;
+        overflow: auto;
+        background-color: var(--background_menu);
+    }
+
+    @keyframes mostrar {
+        from {
+            left: -300px;
+        }
+        to {
+            left: 0px;
+        }
+    }
+
+    @keyframes fechar {
+        from {
+            left: 0px;
+            z-index: 2;
+        }
+        to {
+            left: -300px;
+            z-index: 2;
+        }
+    }
+}
+
+/* -- DESKTOP -- */
+@media (min-width: 992px) {
+    .manual_container {
+        height: 100%;
+    }
+
+    .manual_col_conteudo {
+        height: 100%;
+        overflow: auto;
+    }
+    .manual_col_menu {
+        min-width: 300px;
+        height: 100%;
+        background-color: var(--background_menu);
+        overflow: auto;
+    }
+    .manual_col_menu_mobile {
+        display: none;
+    }
+
+    .manual_row {
+        height: 100%;
+        background-color: var(--background_conteudo);
+    }
+    
+    .manual_conteudo {
+        width: 60%;
+    }
+}
