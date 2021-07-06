@@ -12,8 +12,26 @@
     --color_item: #4682B4;
 }
 
-html, body {
-    height: 100%;
+.manual_menu::-webkit-scrollbar {
+    width: 6px;
+}
+.manual_menu::-webkit-scrollbar-track {
+    background: #B0C4DE;
+}
+.manual_menu::-webkit-scrollbar-thumb {
+    background-color: var(--color_interacao);
+    border-radius: 5px;  
+}
+
+.manual_conteudo::-webkit-scrollbar {
+    width: 6px;
+}
+.manual_conteudo::-webkit-scrollbar-track {
+    background: transparent;
+}
+.manual_conteudo::-webkit-scrollbar-thumb {
+    background-color: var(--color_interacao);
+    border-radius: 5px;  
 }
 
 .manual_descricao::-webkit-scrollbar {
@@ -27,26 +45,16 @@ html, body {
     border-radius: 5px;  
 }
 
-.manual_col_menu::-webkit-scrollbar {
-    width: 6px;
-}
-.manual_col_menu::-webkit-scrollbar-track {
-    background: #B0C4DE;
-}
-.manual_col_menu::-webkit-scrollbar-thumb {
-    background-color: var(--color_interacao);
-    border-radius: 5px;  
-}
-
 .manual_titulo {
     color: var(--color_titulo);
-    padding-left: 6px;
+    padding: 4px 0 4px 6px;
     border-left: 4px solid var(--color_border);
 }
 .manual_titulo:hover {
     cursor: pointer;
     background: #B0C4DE50;
 }
+
 .manual_texto {
     color: var(--color_texto);
 }
@@ -62,41 +70,82 @@ html, body {
 }
 
 /* -- MOBILE -- */
-@media (max-width: 991px) {
-    .manual_container {
+@media (max-width: 799px) {
+    html, body {
         height: 100%;
+    }
+
+    .manual_navegacao {
+        height: 10%;
+        min-height: 58px;
+    }
+    .manual_container {
+        height: 90%;
+    }
+
+    .manual_navegacao > nav {
+        height: 100%;
+        min-height: 58px;
     }
 
     .menu_row {
-        height: auto;
+        height: 10%;
+        min-height: 58px;
         background-color: var(--background_menu_mobile);
     }
     .manual_row {
-        height: 100%;
+        height: 90%;
         background-color: var(--background_conteudo);
     }
-    
-    .manual_conteudo {
-        z-index: 1;
-        width: 60%; 
-        min-width: 300px;
-    }
 
-    .manual_col_conteudo {
-        height: 100%;
-        overflow: auto;
+    .manual_col_menu {
+        z-index: 1;
+        height: 81%;
+        width: 300px;
+        position: absolute;
+        left: -300px;
+        background-color: var(--background_menu);
     }
+    .manual_col_conteudo {
+        z-index: 0;
+        height: 100%;
+    }
+    .manual_col_descricao {
+        z-index: 1;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        background-color: var(--background_descrisao);
+    }
+    
     .manual_col_menu_mobile {
         display: flex;
         align-items: center;
     }
-    .manual_col_menu {
-        z-index: -1;
+
+    .manual_conteudo {
         height: 100%;
-        width: 300px !important;
-        position: absolute !important;
-        overflow: auto;
-        background-color: var(--background_menu);
+        overflow-y: auto;
+    }
+    .manual_menu {
+        height: 100%;
+        width: 300px;
+        overflow-y: auto;
+    }
+    .manual_descricao {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .manual_descricao_botao {
+        border-radius: 50% !important;
+        border: 2px solid var(--color_interacao) !important;
+        color: var(--color_interacao) !important;
+        background-color: #B0C4DE !important;
+    }
+    .manual_descricao_botao:hover {
+        background-color: #bcd3f1 !important;
     }
 
     @keyframes mostrar-menu {
@@ -111,45 +160,90 @@ html, body {
     @keyframes fechar-menu {
         from {
             left: 0px;
-            z-index: 2;
         }
         to {
             left: -300px;
-            z-index: 2;
+        }
+    }
+
+    @keyframes mostrar-descricao {
+        from {
+            left: 100%;
+        }
+        to {
+            left: 0%;
+        }
+    }
+
+    @keyframes fechar-descricao {
+        from {
+            left: 0%;
+        }
+        to {
+            left: 100%;
         }
     }
 }
 
 /* -- DESKTOP -- */
-@media (min-width: 992px) {
-    .manual_container {
+@media (min-width: 800px) {
+    html, body {
         height: 100%;
+    }
+
+    .manual_navegacao {
+        height: 10%;
+        min-height: 58px;
+    }
+    .manual_container {
+        height: 90%;
     }
 
     .manual_row {
         height: 100%;
     }
+    .manual_navegacao > nav {
+        height: 100%;
+        min-height: 58px;
+    }
 
-    .manual_col_conteudo {
-        height: 100%;
-        overflow: auto;
-        background-color: var(--background_conteudo);
+    .conteudo_container {
+        max-width: 480px;
     }
-    .manual_col_menu {
-        height: 100%;
-        min-width: 300px;
-        background-color: var(--background_menu);
-        overflow: auto;
-    }
+
     .manual_col_menu_mobile {
         display: none;
     }
+    .manual_col_menu {
+        height: 100%;
+        width: 280px;
+        background-color: var(--background_menu);
+    }
+    .manual_col_conteudo {
+        height: 100%;
+        background-color: var(--background_conteudo);
+    }
     .manual_col_descricao {
+        height: 100%;
         width: 0%;
         overflow: hidden;
         background-color: var(--background_descrisao);
     }
 
+    .manual_menu {
+        height: 100%;
+        min-width: 250px;
+        overflow: auto;
+    }
+    .manual_conteudo {
+        height: 100%;
+        overflow: auto;
+    }
+    .manual_descricao {
+        height: 100%;
+        overflow: auto;
+    }
+    
     .manual_descricao_botao {
         border-radius: 50% !important;
         border: 2px solid var(--color_interacao) !important;
@@ -160,28 +254,18 @@ html, body {
         background-color: #bcd3f1 !important;
     }
 
-    .manual_conteudo {
-        width: 60%;
-    }
-    .manual_descricao {
-        height: 100%;
-        margin-right: 17px;
-        position: fixed;
-        overflow: auto;
-    }
-
-    @keyframes ver-descricao {
+    @keyframes mostrar-descricao {
         from {
             width: 0%;
         }
         to {
-            width: 30%;
+            width: 35%;
         }
     }
 
     @keyframes fechar-descricao {
         from {
-            width: 30%;
+            width: 35%;
         }
         to {
             width: 0%;
